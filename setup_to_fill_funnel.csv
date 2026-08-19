@@ -1,0 +1,13 @@
+stage_order,stage,count,available_from_order_master,notes
+1,Setups generated / persisted in order_master,17,YES,order_master only contains setups inserted/persisted. Suppressed-before-insert setups need an emission/gate audit log.
+2,Suppressed at Execute-TF freshness gate G4,,NO,"Computed only for joined zone rows using rule BZ/SZ/GSZ limit=0, GDZ limit=1. This is would-block among persisted rows, not true suppressed-before-insert count."
+3,Suppressed at circuit-limit gate,,NO,order_master has no lower_ckt / upper_ckt / gate-decision columns.
+4,Suppressed — other,,NO,Rows suppressed outside allowlist/universe gate D-1/other pre-insert gates are not present in order_master.
+5,GTT Single entries placed,17,ASSUMED,Assumed each order_master row represents a persisted/sent GTT Single entry. No broker_gtt_id/status column exists to prove broker placement.
+6,Filled — entry confirmed,17,YES,Count where is_trade_started=1 OR entry_timestamp is not null OR order_status.entry_hit=True.
+7,Filled with OCO confirmed,,NO,order_master has no OCO confirmation column. Counted only if order_status contains oco_confirmed/gtt_oco_confirmed/etc.
+8,Completed,4,YES,completed_on not null OR order_status status is success/failed.
+9,Exited by Target,2,YES,Derived from order_status.status/reason.
+10,Exited by SL,2,YES,Derived from order_status.status/reason.
+11,Still pending,13,YES,Derived from order_status.status=pending.
+12,Entry not triggered,0,YES,Derived from order_status.status=not_triggered.
