@@ -1,0 +1,17 @@
+Environment: conda environment finpro, Python 3.13
+
+Compilation:
+PYTHONPATH=. conda run -n finpro python -m py_compile [all 22 packaged production files]
+Result: PASS
+
+Focused suite:
+PYTHONPATH=. conda run -n finpro pytest -q tests/test_futures_approval.py tests/test_futures_approval_response.py tests/test_futures_scanner_persistence.py tests/test_futures_multi_pending.py tests/test_option3_websocket_winner.py tests/test_option3_winner_completion.py tests/test_futures_snapshot_lifecycle.py tests/test_futures_reconciliation.py tests/test_futures_error_recovery.py tests/test_futures_gate_validation.py tests/test_futures_risk_engine.py tests/test_production_guards.py
+Result: 153 passed, 2 failed, 14 warnings
+
+Failures:
+1. tests/test_option3_websocket_winner.py::test_matched_futures_fill_continues_existing_oms_oco_flow
+   The test fixture lacks expiry_date and the current socket OCO path accesses it.
+2. tests/test_futures_risk_engine.py::test_futures_boundary_rejects_reservation_payload_mismatch[payload_change2]
+   The current FyersClient futures boundary did not reject a mismatched leg1 price in this test.
+
+No live broker calls were made while producing this package.

@@ -1,0 +1,35 @@
+Path,Type,Change_Type,Purpose,Included_In_Report_Section
+apps/backend/api/bucket_orders.py,Production,Modified,Cash entry/protective boundary safety used by shared loss-control separation,8;18;24
+apps/backend/api/bucket_orders_future.py,Production,Modified,Futures candidate approval/rejection/edit endpoint and structured outcomes,6;15;16;17
+apps/backend/api/futures_approval_response.py,Production,New,Structured futures approval response construction and reason mapping,16;17
+apps/backend/main.py,Production,Modified,FastAPI startup reconciliation integration,14;18
+data_fetchers/fyers/fyers_general_socket.py,Production,Modified,Futures fill/winner callback coordination and existing OCO continuation,10;11;12;13
+data_fetchers/fyers/fyers_utils.py,Production,Modified,Contract formatting and broker GTT helpers,5;18
+scripts/futures_gate_validation.py,Production,New,Offline gate validation diagnostics,14;25
+scripts/futures_graduated_live_scanner.py,Production,New,Futures setup scanning and DB candidate persistence,5
+scripts/futures_reconciliation.py,Production,New,Read-only futures reconciliation and explicit recovery,14;18;25
+scripts/futures_risk_engine.py,Production,New,Durable risk decisions and Option-3 lifecycle state machine,7;8;9;10;13;14
+scripts/futures_selector.py,Production,New,Futures selection and metadata validation,2;7
+scripts/futures_state_store.py,Production,New,Durable snapshot, audit, transaction, and gate storage,8;14;19
+scripts/graduated_live_config.py,Production,New,Option-3 configuration, approved universe lot sizes, and state/gate constants,2;7;14
+scripts/graduated_live_execution.py,Production,New,Guarded futures submission, winner claim, loser cancellation, and completion adapter,6;9;10;11;13
+scripts/graduated_live_exports.py,Production,New,Completed-trade data quality/export validation,17;21
+scripts/scanner_fc.py,Production,Modified,Futures expiry discovery, filtering, and existing strategy integration,2;5
+scripts/setup_engine_new.py,Production,Modified,Existing setup engine used by scanner formatting and setup calculation,2;5
+shared/db/db_model.py,Production,Modified,Trade/future/OMS model definitions and broker identifiers,5;19
+shared/db/db_utils.py,Production,Modified,Trade signal/futures persistence and cash boundary helper,5;18;19
+shared/db/fyers_req_model.py,Production,Modified,Guarded FYERS client methods and read-only broker access,6;18;24
+shared/db/req_model.py,Production,Modified,Approval and candidate-edit request models,6;15
+tests/test_futures_approval.py,Test,New,Approval, rejection, edit, retry, and broker outcome tests,21
+tests/test_futures_approval_response.py,Test,New,Structured response risk-context test,21
+tests/test_futures_error_recovery.py,Test,New,Explicit recovery and unmatched exposure tests,21
+tests/test_futures_gate_validation.py,Test,New,Gate validation and durable evidence tests,21
+tests/test_futures_multi_pending.py,Test,New,Multiple pending, winner, race, and cash independence tests,21
+tests/test_futures_readonly_scanner.py,Test,New,Read-only scanner classification tests,21
+tests/test_futures_reconciliation.py,Test,New,Startup/restart reconciliation tests,21
+tests/test_futures_risk_engine.py,Test,New,Risk and broker-boundary tests,21
+tests/test_futures_scanner_persistence.py,Test,New,Scanner TradeSignal/Future_Order/OMS persistence tests,21
+tests/test_futures_snapshot_lifecycle.py,Test,New,Reservation cleanup and state recomputation tests,21
+tests/test_option3_websocket_winner.py,Test,New,WebSocket winner and OCO continuation tests,21
+tests/test_option3_winner_completion.py,Test,New,Winner exit and unlock tests,21
+tests/test_production_guards.py,Test,New,Global halt and protective-action tests,21
