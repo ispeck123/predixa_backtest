@@ -1,0 +1,161 @@
+{
+  "report_type": "read_only_mcx_zone_pipeline_replay",
+  "generated_at": "2026-10-07T15:49:09",
+  "input": {
+    "symbol": "CRUDEOILM",
+    "timeframe": "X / 60m",
+    "expiry": "19102026",
+    "csv": "data/indian_commodity_data/latest_data_csv/CRUDEOILM_19102026_sixty.csv",
+    "cutoff": "2026-10-06 15:43:53",
+    "target_zone_id": "TEST_X_GDZ_3975"
+  },
+  "post_pipeline_14_field_row": {
+    "zone_id": "TEST_X_GDZ_3975",
+    "zone_type": "GDZ",
+    "timeframe": "X",
+    "proximal": 8399.0,
+    "distal": 8126.0,
+    "base_start_idx": 3970,
+    "legout_end_idx": 3975,
+    "legout_end_idx_source": "Zone.departure_idx",
+    "removes_structure": true,
+    "rr": null,
+    "rr_ratio": null,
+    "retest_count": 4,
+    "penetration_pct": 0.0,
+    "score_total": null,
+    "raw_score": 0,
+    "final_score": 0,
+    "final_weighted_score": null,
+    "state": "RED",
+    "block_reason": "INVALIDATED_GAP_DEEP_WICK (>86%)",
+    "invalidated": true,
+    "violation": "TRUE_BREAK",
+    "base_len": 6,
+    "gap_composite_score": 7,
+    "gap_is_structural": true,
+    "session_accepted": true
+  },
+  "detected_before_qualification": {
+    "zone_id": "TEST_X_GDZ_3975",
+    "zone_type": "GDZ",
+    "timeframe": "X",
+    "proximal": 8399.0,
+    "distal": 8126.0,
+    "base_start_idx": 3970,
+    "legout_end_idx": 3975,
+    "legout_end_idx_source": "Zone.departure_idx",
+    "removes_structure": true,
+    "rr": null,
+    "rr_ratio": null,
+    "retest_count": 0,
+    "penetration_pct": 0.0,
+    "score_total": null,
+    "raw_score": 0,
+    "final_score": 0,
+    "final_weighted_score": null,
+    "state": "AMBER",
+    "block_reason": null,
+    "invalidated": false,
+    "violation": "NONE",
+    "base_len": 6,
+    "gap_composite_score": 7,
+    "gap_is_structural": true,
+    "session_accepted": false
+  },
+  "qualification_outcome": {
+    "present_in_all_detected_and_qualified_zones": true,
+    "present_in_final_qualified_zones": false,
+    "present_in_active_setup_engine_zones_X": false,
+    "final_filter": "state != RED and 0.0 <= penetration_pct <= 50 for TF.X",
+    "rejection": "INVALIDATED_GAP_DEEP_WICK (>86%)"
+  },
+  "construction_bars": [
+    {
+      "position": 3970,
+      "source_index": 3970,
+      "timestamp": "2026-09-04 19:00:00",
+      "open": 8246.0,
+      "high": 8252.0,
+      "low": 8126.0,
+      "close": 8218.0
+    },
+    {
+      "position": 3971,
+      "source_index": 3971,
+      "timestamp": "2026-09-04 20:00:00",
+      "open": 8218.0,
+      "high": 8328.0,
+      "low": 8218.0,
+      "close": 8303.0
+    },
+    {
+      "position": 3972,
+      "source_index": 3972,
+      "timestamp": "2026-09-04 21:00:00",
+      "open": 8305.0,
+      "high": 8336.0,
+      "low": 8287.0,
+      "close": 8307.0
+    },
+    {
+      "position": 3973,
+      "source_index": 3973,
+      "timestamp": "2026-09-04 22:00:00",
+      "open": 8307.0,
+      "high": 8355.0,
+      "low": 8299.0,
+      "close": 8324.0
+    },
+    {
+      "position": 3974,
+      "source_index": 3974,
+      "timestamp": "2026-09-04 23:00:00",
+      "open": 8328.0,
+      "high": 8335.0,
+      "low": 8314.0,
+      "close": 8321.0
+    },
+    {
+      "position": 3975,
+      "source_index": 3975,
+      "timestamp": "2026-09-07 09:00:00",
+      "open": 8399.0,
+      "high": 8449.0,
+      "low": 8399.0,
+      "close": 8436.0
+    }
+  ],
+  "legacy_zone_ranker_configuration_probe": {
+    "cfg_class": "scripts.models.Config",
+    "badzone_base_len_exists": false,
+    "rr_min_exists": false,
+    "max_base_len": 4,
+    "min_rr": 2.1,
+    "probe": "copy only; no source object or persisted data was modified",
+    "actual_invalidated_zone_probe": {
+      "result": "RETURNED_AT_INVALIDATION_GATE",
+      "score_total": 0,
+      "block_reason": "INVALIDATED_TRUE_BREAK"
+    },
+    "cfg_access_probe": {
+      "result": "EXCEPTION",
+      "exception_type": "AttributeError",
+      "exception_message": "'Config' object has no attribute 'badzone_base_len'"
+    }
+  },
+  "active_mcx_scoring": {
+    "pipeline": "setup_engine_new.SDEnginePipeline -> ZoneQualityScorer.score_zone",
+    "zone_ranker_used": false,
+    "source": "scripts/setup_engine_new.py:632-659",
+    "score_total_interpretation": "Not populated by the active MCX pipeline; final_score is the active score field."
+  },
+  "source_evidence": {
+    "raw_detection": "scripts/trade_engine.py:4204-4209",
+    "violation_retest_and_structure": "scripts/trade_engine.py:4220-4230",
+    "qualified_filter": "scripts/trade_engine.py:4241-4249",
+    "active_mcx_scoring": "scripts/setup_engine_new.py:632-659",
+    "legacy_ranker_cfg": "scripts/trade_engine.py:3249-3287 and 3492-3498",
+    "base_config": "scripts/models.py:383-440"
+  }
+}
